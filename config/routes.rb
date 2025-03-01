@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get "borrowings/create"
-  get "borrowings/destroy"
-  get "books/index"
-  get "books/show"
+  root "books#index"
+  resources :books, only: [:index, :show]
+  resources :borrowings, only: [:create, :destroy]
+  get 'profile', to: 'users#profile'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
