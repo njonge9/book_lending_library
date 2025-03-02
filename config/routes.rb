@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   root "books#index"
   resources :books, only: [:index, :show]
   resources :borrowings, only: [:create, :destroy]
   get 'profile', to: 'users#profile'
+  resources :users, only: [:new, :create]
+  get "/signup", to: "users#new"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

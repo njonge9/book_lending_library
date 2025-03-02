@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  allow_unauthenticated_access only: [:index]
   def index
     @books = Book.all
   end
