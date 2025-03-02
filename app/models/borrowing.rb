@@ -3,7 +3,7 @@ class Borrowing < ApplicationRecord
   belongs_to :book
 
   validates :due_date, presence: true
-  validates :book_availability, on: :create
+  validate :book_availability, on: :create
 
   before_create :set_due_date
   before_save :calculate_fine

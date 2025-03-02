@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_02_202723) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_02_221040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -31,8 +31,33 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_02_202723) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "fine"
+    t.string "payment_status"
+    t.string "payment_method"
+    t.string "payment_reference"
     t.index ["book_id"], name: "index_borrowings_on_book_id"
     t.index ["user_id"], name: "index_borrowings_on_user_id"
+  end
+
+  create_table "fines", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.integer "amount"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_fines_on_book_id"
+    t.index ["user_id"], name: "index_fines_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.decimal "amount"
+    t.string "checkout_id"
+    t.string "status"
+    t.string "receipt_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -54,5 +79,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_02_202723) do
   end
 
   add_foreign_key "borrowings", "books"
+  add_foreign_key "fines", "books"
+  add_foreign_key "fines", "users"
+  add_foreign_key "payments", "users"
   add_foreign_key "sessions", "users"
 end

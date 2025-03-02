@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Avo::Engine, at: Avo.configuration.root_path
   resource :session
   resources :passwords, param: :token
   root "books#index"

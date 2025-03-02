@@ -65,3 +65,5 @@ group :test do
 end
 
 gem "whenever", "~> 1.0"
+
+gem "avo", "~> 3.17"
