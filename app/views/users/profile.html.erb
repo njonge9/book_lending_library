@@ -1,2 +1,21 @@
-<h1>Users#profile</h1>
-<p>Find me in app/views/users/profile.html.erb</p>
+<h1>My Borrowed Books</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Due Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @borrowed_books.each do |borrowing| %>
+      <tr>
+        <td><%= borrowing.book.title %></td>
+        <td><%= borrowing.due_date %></td>
+        <td>
+          <%= button_to "Return", borrowing_path(borrowing), method: :delete, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
