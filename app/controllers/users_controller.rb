@@ -6,9 +6,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
 
     if @user.save
+      flash[:success] = "You have signed up successfully."
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -16,5 +18,11 @@ class UsersController < ApplicationController
 
   def profile
     @borrowed_books = current_user.borrowed_books.where(returned: false).includes(:book)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email_address, :password, :password_confirmation)
   end
 end
