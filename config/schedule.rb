@@ -17,5 +17,9 @@ every 1.days, at: '8:00 am' do
   runner "DueBookReminderJob.perform_later"
 end
 
+every 1.day, at: '9:00 am' do
+  runner "OverdueFineNotifierJob.perform_later"
+end
+
 # Learn more: http://github.com/javan/whenever
 

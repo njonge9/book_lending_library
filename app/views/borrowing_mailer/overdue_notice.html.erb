@@ -1,0 +1,4 @@
+<h1>Hello <%= @user.name %>,</h1>
+<p>Your borrowed book, <strong><%= @borrowing.book.title %></strong>, is overdue since <%= @borrowing.due_date.strftime('%B %d, %Y')%>.</p>
+<p>You have incurred a fine of <strong>Ksh<%= @borrowing.fine %></strong>.</p>
+<p>Please return the book as soon as possible to avoid additional charges.</p>

@@ -4,6 +4,6 @@ class BorrowingMailer < ApplicationMailer
     def due_soon(borrowing)
         @borrowing = borrowing
         @user = borrowing.user
-        mail(to: @user.email, subject: "Reminder: Book Due soon")
+        mail(to: @user.email, subject: "Overdue Book Notice - Fine Applied")
     end
 end
