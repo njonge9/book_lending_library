@@ -12,6 +12,7 @@
       <tr>
         <td><%= borrowing.book.title %></td>
         <td><%= borrowing.due_date %></td>
+        <td><%= borrowing.fine.positive? ? "Ksh#{borrowing.fine}" : "No fine" %></td>
         <td>
           <%= button_to "Return", borrowing_path(borrowing), method: :delete, class: "btn btn-danger" %>
         </td>
