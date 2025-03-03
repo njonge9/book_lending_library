@@ -64,7 +64,6 @@ rails test
 
 ## 🔥 Future Enhancements
 - 🛒 **Payment Integration** (M-Pesa/PayPal) for fines.
-- 📊 **Admin Dashboard** to manage users and books.
 - 📈 **Analytics** for fines and payments.
 
 ## 👥 Contributors
