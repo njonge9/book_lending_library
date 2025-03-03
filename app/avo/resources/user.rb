@@ -9,7 +9,10 @@ class Avo::Resources::User < Avo::BaseResource
     field :id, as: :id
     field :email_address, as: :text
     field :name, as: :text
-    field :sessions, as: :has_many
+    # field :sessions, as: :has_many
+    field :password, as: :password
+    field :password_confirmation, as: :password
+    field :borrowings, as: :has_many 
   end
 end
 

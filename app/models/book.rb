@@ -7,6 +7,6 @@ class Book < ApplicationRecord
     # validates :isb, presence: true
 
     def available?
-        borrowings.where(returned_at: false).empty?
-    end
+        borrowings.where(returned: false).empty?
+      end      
 end
