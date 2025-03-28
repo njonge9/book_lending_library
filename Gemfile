@@ -66,6 +66,6 @@ end
 
 gem "whenever", "~> 1.0"
 
-gem "avo", "~> 3.17"
+gem "avo", "~> 3.18"
 
 gem "rolify", "~> 6.0"
